@@ -1,18 +1,50 @@
 ---
-import '../styles/global.css';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ToolCard from "../components/ToolCard.astro";
+import VideoCard from "../components/VideoCard.astro";
+import { tools } from "../data/tools";
+import { getCollection } from "astro:content";
+import { sortByDate } from "../utils/dates";
+
+const allVideos = await getCollection("videos");
+const latestVideos = sortByDate(allVideos).slice(0, 3);
+const sortedTools = tools.sort((a, b) => a.order - b.order);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1 class="text-3xl font-bold underline">
-			Hello world!
-		</h1>
-	</body>
-</html>
+<BaseLayout title="Home" description="Tools, plugins, and videos for enterprise WordPress development">
+  <section class="mb-20">
+    <h2 class="text-3xl font-semibold text-stone-900 mb-8">Open Source Tools</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {sortedTools.map((tool) => (
+        <ToolCard
+          name={tool.name}
+          description={tool.description}
+          githubUrl={tool.githubUrl}
+          status={tool.status}
+          isPlugin={tool.isPlugin}
+        />
+      ))}
+    </div>
+  </section>
+
+  <section>
+    <div class="flex items-center justify-between mb-8">
+      <h2 class="text-3xl font-semibold text-stone-900">Latest Videos</h2>
+      <a href="/videos" class="text-stone-600 hover:text-stone-900 text-sm font-semibold transition-colors">
+        View All &rarr;
+      </a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {latestVideos.map((video) => (
+        <VideoCard
+          title={video.data.title}
+          description={video.data.description}
+          publishDate={video.data.publishDate}
+          slug={video.slug}
+          tags={video.data.tags}
+          youtubeId={video.data.youtubeId}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

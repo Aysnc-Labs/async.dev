@@ -1,0 +1,35 @@
+---
+import Tag from "./Tag.astro";
+import { formatDate } from "../utils/dates";
+
+interface Props {
+	title: string;
+	description: string;
+	publishDate: Date;
+	slug: string;
+	tags: string[];
+	youtubeId: string;
+}
+
+const { title, description, publishDate, slug, tags, youtubeId } = Astro.props;
+const thumbnailUrl = `https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg`;
+---
+
+<a href={`/videos/${slug}`} class="block group">
+  <div class="overflow-hidden rounded-lg mb-4">
+    <img
+      src={thumbnailUrl}
+      alt={title}
+      class="aspect-video w-full object-cover transition-transform group-hover:scale-105"
+      loading="lazy"
+    />
+  </div>
+  <div class="flex flex-wrap gap-2 mb-2">
+    {tags.map((tag) => <Tag tag={tag} />)}
+  </div>
+  <h3 class="text-xl font-semibold text-stone-900 group-hover:text-stone-600 transition-colors mb-2">
+    {title}
+  </h3>
+  <p class="text-stone-500 text-sm mb-2">{formatDate(publishDate)}</p>
+  <p class="text-stone-600 text-sm line-clamp-2">{description}</p>
+</a>
