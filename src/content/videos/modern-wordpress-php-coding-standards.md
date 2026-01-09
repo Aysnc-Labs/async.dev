@@ -1,5 +1,5 @@
 ---
-title: "Why Coding Standards Matter"
+title: "Modern WordPress PHP Coding Standards"
 publishDate: 2026-01-09
 youtubeId: "aZczoV7z2HQ"
 description: "Exploring WordPress coding standards, their history, and why modern PHP practices are essential for enterprise WordPress development."
@@ -7,7 +7,7 @@ tags: ['coding-standards', 'wordpress', 'phpcs']
 featured: true
 ---
 
-## Why Coding Standards Matter
+## Modern WordPress PHP Coding Standards
 
 In this post, I want to dive into the world of **WordPress coding standards**. Before we do deep dives into advanced development in future posts, we first need to establish how we are actually going to write the code.
 
@@ -41,7 +41,7 @@ The [PHP Standard Recommendation (PSR)](https://www.php-fig.org/psr/)—specific
 
 Unfortunately, WordPress "missed the boat" on PSR. The two standards are wildly different, specifically regarding readability, which is highly subjective. For example, many engineers find PSR easier to follow, while WordPress emphasizes heavy inline documentation.
 
-![A timeline graphic showing WordPress coding standards starting in 2011 and PSR-1 being accepted in 2012, illustrating why WordPress didn't adopt the PSR standard.](/images/videos/coding-standards-matter/wpcs-git-repo.png)
+![A timeline graphic showing WordPress coding standards starting in 2011 and PSR-1 being accepted in 2012, illustrating why WordPress didn't adopt the PSR standard.](/images/videos/modern-wordpress-php-coding-standards/wpcs-git-repo.png)
 
 ---
 
@@ -69,7 +69,7 @@ To make the standards work with "improved" practices, I removed rules that confl
 
 Autoloading is a game-changer in PHP, yet WordPress remains behind on this front. If you are working on a new codebase and using classes, you absolutely should be using autoloading. My goal is to find a middle ground: using the spirit of WordPress standards while enabling modern PHP practices.
 
-![A view of the XML configuration file for the Aysnc WordPress coding standards, highlighting the specific rules being excluded to allow for autoloading and short array syntax.](/images/videos/coding-standards-matter/excluded-rules.png)
+![A view of the XML configuration file for the Aysnc WordPress coding standards, highlighting the specific rules being excluded to allow for autoloading and short array syntax.](/images/videos/modern-wordpress-php-coding-standards/excluded-rules.png)
 
 ---
 
