@@ -35,7 +35,7 @@ export const tools: Tool[] = [
 	},
 	{
 		name: "wordpress-dynamic-media",
-		description: "Dynamic media handling for WordPress (Work in Progress).",
+		description: "Dynamic media handling for WordPress.",
 		githubUrl: "https://github.com/Aysnc-Labs/wordpress-dynamic-media",
 		status: "active",
 		isPlugin: true,
